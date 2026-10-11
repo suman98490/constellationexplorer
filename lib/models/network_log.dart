@@ -23,6 +23,16 @@ class NetworkLog {
 
   String? error;
 
+  // ============================================================
+  // HTTP HEADERS
+  // ============================================================
+
+  /// Headers sent with the request
+  final Map<String, dynamic> requestHeaders;
+
+  /// Headers received in the response
+  final Map<String, dynamic> responseHeaders;
+
   NetworkLog({
     required this.id,
     required this.description,
@@ -36,7 +46,22 @@ class NetworkLog {
     this.request,
     this.response,
     this.error,
-  });
+
+    // Always create mutable maps.
+    Map<String, dynamic>? requestHeaders,
+    Map<String, dynamic>? responseHeaders,
+  })  : requestHeaders =
+  requestHeaders != null
+      ? Map<String, dynamic>.from(requestHeaders)
+      : <String, dynamic>{},
+        responseHeaders =
+        responseHeaders != null
+            ? Map<String, dynamic>.from(responseHeaders)
+            : <String, dynamic>{};
+
+  // ============================================================
+  // STATUS TEXT
+  // ============================================================
 
   String get statusText {
     if (statusCode == null) {
@@ -57,6 +82,10 @@ class NetworkLog {
 
     return "Unknown";
   }
+
+  // ============================================================
+  // DURATION TEXT
+  // ============================================================
 
   String get durationText {
     if (duration == null) {

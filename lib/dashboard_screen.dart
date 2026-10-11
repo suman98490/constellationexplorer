@@ -1,4 +1,5 @@
 import 'package:constellation_explorer/case_runtime_view.dart.dart';
+import 'package:constellation_explorer/web_embed_screen.dart';
 import '../engine/case_type_parser.dart';
 import '../models/available_case_type.dart';
 import '../services/data_view_service.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 
 import '../services/session_manager.dart';
+import 'documentation/screens/api_documentation_screen.dart';
 import 'models/portal_page.dart';
 import 'network_monitor_screen.dart';
 
@@ -15,6 +17,7 @@ enum DashboardPage {
   dataViews,
   apiExplorer,
   networkMonitor,
+  webEmbed,
   settings,
 }
 
@@ -129,8 +132,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
       case DashboardPage.networkMonitor:
         return const NetworkMonitorScreen();
 
+      case DashboardPage.apiExplorer:
+        return const ApiDocumentationScreen();
+
+      case DashboardPage.webEmbed:
+        return const WebEmbedScreen();
+
       default:
         return _buildHome();
+
     }
   }
 
@@ -363,25 +373,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 DashboardPage.apiExplorer,
                               ),
 
-                              ListTile(
-                                leading: const Icon(
-                                  Icons.monitor,
-                                  color: Colors.white,
-                                ),
-                                title: const Text(
-                                  "Network Monitor",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (_) => const NetworkMonitorScreen(),
-                                    ),
-                                  );
-                                },
+                              _menu(
+
+                                Icons.monitor,
+
+                                "Network Monitor",
+
+                                DashboardPage.networkMonitor,
+
+                              ),
+                              _menu(
+                                Icons.web,
+                                "Pega Web Embed",
+                                DashboardPage.webEmbed,
                               ),
                             ],
                           ),
