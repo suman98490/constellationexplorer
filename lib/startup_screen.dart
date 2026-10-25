@@ -34,7 +34,7 @@ class _StartupScreenState extends State<StartupScreen> {
   // ============================================================
 
   static const String redirectUri =
-      "http://localhost:8080";
+      "https://suman98490.github.io/constellationexplorer/";
 
   static const String authorizationPath =
       "/PRRestService/oauth2/v1/authorize";
