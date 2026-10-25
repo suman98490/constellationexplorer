@@ -45076,7 +45076,7 @@ f=h.length
 if(f===0||g.length===0){n.a6(new A.awt(n))
 s=1
 break}j=B.c.je(h,"/")?B.c.X(h,0,f-1):h
-m=new A.afr(j,g,"https://suman98490.github.io/constellationexplorer/",j+"/PRRestService/oauth2/v1/authorize",j+"/PRRestService/oauth2/v1/token")
+m=new A.afr(j,g,"https://suman98490.github.io/constellationexplorer",j+"/PRRestService/oauth2/v1/authorize",j+"/PRRestService/oauth2/v1/token")
 n.a6(new A.awu(n))
 p=4
 A.a2().$1(u.I)
